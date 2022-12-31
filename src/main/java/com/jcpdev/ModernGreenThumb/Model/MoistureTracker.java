@@ -1,13 +1,17 @@
 package com.jcpdev.ModernGreenThumb.Model;
 
 public class MoistureTracker {
+    private String thumbnailUrl;
+    private String name;
+    private int value;
+    private String lastTimeChecked;
 
     public MoistureTracker(String name) {
         this.name = name;
+        value=0;
+        lastTimeChecked="Never";
+        thumbnailUrl="none";
     }
-
-
-
     public int getValue() {
         return value;
     }
@@ -15,10 +19,6 @@ public class MoistureTracker {
     public void setValue(int value) {
         this.value = value;
     }
-
-
-
-    private int value;
 
     public String getLastTimeChecked() {
         return lastTimeChecked;
@@ -28,8 +28,6 @@ public class MoistureTracker {
         this.lastTimeChecked = lastTimeChecked;
     }
 
-    private String lastTimeChecked;
-
     public String getName() {
         return name;
     }
@@ -38,6 +36,12 @@ public class MoistureTracker {
         this.name = name;
     }
 
-    private String name;
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
+    }
 
 }

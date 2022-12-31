@@ -2,12 +2,13 @@ package com.jcpdev.ModernGreenThumb.Model;
 
 public class User {
     private String name;
-    private final String userId;
+    private String userId;
 
     public User(String name, String userId){
         this.userId=userId;
         this.name=name;
     }
+    public User(){}
 
     public String getToken() {
         return userId;
