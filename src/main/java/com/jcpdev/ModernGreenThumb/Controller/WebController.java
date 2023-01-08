@@ -27,14 +27,15 @@ public class WebController {
     @CrossOrigin
     @PostMapping("/createuser")
     public String createUser(@RequestBody User user) throws InterruptedException, ExecutionException {
-        return userService.saveUserDetails(user);
+        return userService.createUser(user);
     }
 
     @CrossOrigin
-    @PutMapping("/updateuser")
-    public String updateUser(@RequestBody User user) throws InterruptedException, ExecutionException {
-        return userService.updateUserDetails(user);
+    @PostMapping("/updateusertoken")
+    public String updateUser(@RequestParam String token,@RequestParam String userId) throws InterruptedException, ExecutionException {
+        return userService.updateUserToken(token,userId);
     }
+
     @CrossOrigin
     @PutMapping("/addtracker")
     public String addTrackerToUser(@RequestBody Map<String,String> json, @RequestParam String userId) throws InterruptedException, ExecutionException {

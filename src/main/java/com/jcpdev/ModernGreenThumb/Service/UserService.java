@@ -5,23 +5,24 @@ import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import com.jcpdev.ModernGreenThumb.Model.User;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Service
 public class UserService {
     public static final String COL_NAME = "Users";
 
-    public String saveUserDetails(User user) throws InterruptedException, ExecutionException {
+
+    public String createUser(User user) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(user.getToken()).set(user.getName());
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(user.getUserId()).create(user);
         return collectionsApiFuture.get().getUpdateTime().toString();
     }
 
-
-
-    public String updateUserDetails(User user) throws InterruptedException, ExecutionException {
+    public String updateUserToken(String token, String userId) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(user.getName()).set(user);
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(userId).update("token", token);
         return collectionsApiFuture.get().getUpdateTime().toString();
     }
 
