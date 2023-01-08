@@ -3,16 +3,39 @@ package com.jcpdev.ModernGreenThumb.Model;
 public class User {
     private String name;
     private String userId;
+    private String token;
 
-    public User(String name, String userId){
-        this.userId=userId;
-        this.name=name;
+    public String getEmail() {
+        return email;
     }
-    public User(){}
 
-    public String getToken() {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private String email;
+    public String getUserId() {
         return userId;
     }
+
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+
+
+    public User(String name, String userId, String email){
+        this.userId=userId;
+        this.name=name;
+        this.email=email;
+
+    }
+    public User(){}
 
     public String getName() {
         return name;
